@@ -1,0 +1,13 @@
+D:\Lucas\Projetos\AuthIdentity\bin\Debug\netcoreapp2.0\app.db
+D:\Lucas\Projetos\AuthIdentity\bin\Debug\netcoreapp2.0\AuthIdentity.deps.json
+D:\Lucas\Projetos\AuthIdentity\bin\Debug\netcoreapp2.0\AuthIdentity.runtimeconfig.json
+D:\Lucas\Projetos\AuthIdentity\bin\Debug\netcoreapp2.0\AuthIdentity.runtimeconfig.dev.json
+D:\Lucas\Projetos\AuthIdentity\bin\Debug\netcoreapp2.0\AuthIdentity.dll
+D:\Lucas\Projetos\AuthIdentity\bin\Debug\netcoreapp2.0\AuthIdentity.pdb
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\AuthIdentity.csproj.CoreCompileInputs.cache
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\AuthIdentity.AssemblyInfoInputs.cache
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\AuthIdentity.AssemblyInfo.cs
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\AuthIdentity.dll
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\AuthIdentity.pdb
+D:\Lucas\Projetos\AuthIdentity\obj\Debug\netcoreapp2.0\AuthIdentity.csprojResolveAssemblyReference.cache

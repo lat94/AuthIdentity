@@ -1,0 +1,31 @@
+/*won't display nav in login page*/
+#menuLayout, #cbEmpresa{
+    display: none;
+}
+
+
+.frmLogin {
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 70px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.3), 0 0px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.form-group #btnLogin{
+    min-width: 100%;
+}
+
+.form-group{
+    text-align: left;
+}
+
+#user, #passwd{
+    height: max-content;
+
+}

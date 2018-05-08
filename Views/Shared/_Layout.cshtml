@@ -1,0 +1,126 @@
+﻿@using System.Globalization;
+@{
+    CultureInfo ptBR = new CultureInfo("pt-BR");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sensatta</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"
+              asp-fallback-href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    
+
+    @RenderSection("Scripts", required: false)
+    
+</head>
+<body>
+    <style>
+        
+
+
+    </style>
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="menuLayout">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+
+                <a class=" img img-responsive align-top" asp-controller="Home" asp-action="Index"  style=" display: inline-block; margin-left: 5px; margin-top: 10px; ">
+                    <img id="imgLogo" style="min-width: 150px; max-width: 250px; " src="@Url.Content("~/images/SensattaWhiteCropped.png")" />                    
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Pré Cadastro</a></li>
+                    <li class="dropdown">
+                        <a asp-area=""  class="dropdown-toggle" data-toggle="dropdown">Relatórios                            
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="listbox">
+                            <li><a asp-controller="Home" asp-action="Contact" role="option">Curva ABC</a></li>
+                            <li><a asp-controller="Home" asp-action="Contact" role="option">Cota Estoque</a></li>
+                            <li><a asp-controller="Home" asp-action="Contact" role="option">Vendas</a>
+                        </ul>
+                        
+                    </li>
+
+                    
+
+
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+            
+        </div>
+    </nav>
+
+
+    <div class=" dropdown" id="cbEmpresa" style="padding: 0; margin-right: 50px;  float: right; ">
+            <p style="margin-bottom: 0; font-size: small;">Empresa</p>
+            <button    role="button" data-toggle="dropdown" class="dropdown-toggle btn btn-primary" href="javascript:void(0)">            
+                <span  data-idPeriodoAtual="4" id="selected">4 </span><span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-left text-left" style="min-width: 0; ">               
+
+                <li><a  href="javascript:void(0)">1 </a> </li>
+                <li><a  href="javascript:void(0)">4 </a> </li>
+                <li><a  href="javascript:void(0)">15 </a> </li>               
+                <li><a  href="javascript:void(0)">23 </a> </li>
+                
+            </ul>    
+    </div>
+
+
+    <div class="container body-content" id="footerLayout">
+        @RenderBody()
+        <hr />
+        <footer >
+            <p>&copy; 2018 - AuthIdentity</p>
+        </footer>
+    </div>
+
+    
+</body>
+</html>

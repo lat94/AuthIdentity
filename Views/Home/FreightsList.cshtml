@@ -1,0 +1,174 @@
+@model IEnumerable<AuthIdentity.Models.HomeViewModels.FreightViewModel>;
+@using System.Globalization;
+
+@{
+    CultureInfo ptBR = new CultureInfo("pt-BR");
+    ViewBag.SubTitle = "Montagem Romaneio";
+    var c = 0;
+}
+
+
+<!-- bootstrap table -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+
+<style>
+    
+</style>
+
+<div class="container">
+<h4>@ViewBag.SubTitle</h4>   
+ 
+
+        <div class="col-md-6 col-xs-12">
+            <h5 style="">Lista</h5>
+            <table data-toggle="table" id="tblFreightList" data-url="none" class="table table-hover table-bordered table-responsive table-condensed" style="overflow: auto; ">
+            <thead class="">
+                <tr  >
+                    <th class="bs-checkbox " data-field="state">
+                        <div class="th-inner">
+                            <input name="btSelectAll" class="selectall" type="checkbox">
+                        </div>
+                        <div class="fht-cell"></div>
+                    </th>
+                    <th data-field="Order">@Html.DisplayNameFor(model => model.Order)</th>
+                    <th data-field="DateSent">@Html.DisplayNameFor(model => model.DateSent)</th>
+                    <th data-field="Value">@Html.DisplayNameFor(model => model.Value)</th>
+                    <th data-field="Name">@Html.DisplayNameFor(model => model.Name)</th>
+                    <th data-field="Address">@Html.DisplayNameFor(model => model.Address)</th>
+                    <th data-field="ZipCode">@Html.DisplayNameFor(model => model.ZipCode)</th>
+                    <th data-field="City">@Html.DisplayNameFor(model => model.City)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    
+                    <tr id="trFreights" class="alpha-align ">
+                    @{var idCheck = "check" + c;}                   
+                        
+                        <td class="bs-checkbox  checkbox-success">
+                            <input data-index="0" data-order="@item.Order" id="@idCheck" name="btSelectItem" type="checkbox" class="">
+                        </td>
+                        <td class="numeric-align">@item.Order </td>
+                        <td>@item.DateSent.ToShortDateString() </td>
+                        <td class="numeric-align">@item.Value.ToString("C2", @ptBR) </td>
+                        <td>@item.Name </td>
+                        <td>@item.Address </td>
+                        <td>@item.ZipCode </td>
+                        <td>@item.City </td>
+                        
+                    </tr>
+                    c ++;
+
+                }  
+
+                <tr>
+                    <td colspan="8" style="text-align: center;">
+                        <span>
+                            <button type="button"  class="btn btn-basic btn-rounded btn-sm " id="btnAdd" style="width: 50%; border-style: solid; border-color:  thistle;"> Adicionar  <span class="glyphicon glyphicon-plus"></span></button>                                     
+                        </span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        </div>
+    
+        
+
+
+
+    <div class="col-md-6 col-xs-12">
+        <h5>Expedição</h5>
+
+        <table data-toggle="table" id="tblFreightIn" data-url="none" class="table table-hover table-bordered table-responsive table-condensed" style="overflow: auto; ">
+            <thead class="">
+                <tr  >
+                    <th class="bs-checkbox " data-field="state">
+                        <div class="th-inner">
+                            <input name="btSelectAll" class="selectall" type="checkbox">
+                        </div>
+                        <div class="fht-cell"></div>
+                    </th>
+                    <th data-field="Order">@Html.DisplayNameFor(model => model.Order)</th>
+                    <th data-field="DateSent">@Html.DisplayNameFor(model => model.DateSent)</th>
+                    <th data-field="Value">@Html.DisplayNameFor(model => model.Value)</th>
+                    <th data-field="Name">@Html.DisplayNameFor(model => model.Name)</th>
+                    <th data-field="Address">@Html.DisplayNameFor(model => model.Address)</th>
+                    <th data-field="ZipCode">@Html.DisplayNameFor(model => model.ZipCode)</th>
+                    <th data-field="City">@Html.DisplayNameFor(model => model.City)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+
+                <tr>
+                    <td colspan="8" style="text-align: center;">
+                        <span>
+                            <button type="button"  class="btn btn-primary btn-rounded btn-sm " id="btnSend" style="width: 50%;"> Enviar  <span class="glyphicon glyphicon-send"></span></button>                                                        
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    
+        
+
+    
+
+</div>
+
+
+<!-- bootstrap table -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-pt-BR.js"></script>
+
+
+<script>
+    $("#btnEnd").on("click", function(){
+        //alert("i'm in");
+        var check = document.getElementsByName("checkbox1");
+        var freights = [];
+
+        //console.log(check);
+
+        for(var i = 0; i < check.length; i++){
+            if(check[i].checked == true){
+                var idCheck = "#check" + i;
+                
+
+                freights = $(idCheck).attr("data-order");
+                alert($(idCheck).attr("data-order"));
+                
+            }
+            else{
+                //alert("no");
+            }
+        } 
+        console.log(freights); 
+
+        /* var boxes = $('input[name=checkbox1]:checked');
+        boxes.each(function(){
+
+            x = boxes => b = b.attr("data-order");            
+
+        }); */
+
+        
+    
+    });
+
+
+
+    $('.selectall').click(function() {
+        $(this.table.elements).filter(':checkbox').prop('checked', this.checked);
+    });
+</script>
+
+  

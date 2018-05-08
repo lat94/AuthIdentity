@@ -1,0 +1,93 @@
+﻿@using System.Globalization;
+@{
+    CultureInfo ptBR = new CultureInfo("pt-BR");
+
+    ViewData["Title"] = "Home Page";
+    
+    //List<AuthIdentity.Models.HomeViewModels.ClientViewModel>clients = (List<AuthIdentity.Models.HomeViewModels.ClientViewModel>)ViewData["Clients"];
+}
+
+
+<link rel="stylesheet" type="text/css" href="~/css/index.css">
+
+
+
+
+<div class="container" style="margin-top: 100px;">
+
+        <div id="myTab">
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="#tab1">Clientes</a>
+				</li>
+				<li>
+					<a href="#tab2">Vendas</a>
+				</li>
+				<li>
+					<a href="#tab3">Romaneio</a>
+				</li>
+				
+			</ul>	
+		</div>
+		<section id="tab1" class="tab-content active">
+			<div>
+				@Html.Partial("ClientsList", model: (IEnumerable<AuthIdentity.Models.HomeViewModels.ClientViewModel>)ViewData["clients"])
+			</div>
+		</section>
+
+		<section id="tab2" class="tab-content hide">
+			<div>
+				@Html.Partial("SalesList", model: (IEnumerable<AuthIdentity.Models.HomeViewModels.SalesViewModel>)ViewData["sales"])
+			</div>
+		</section>
+
+		<section id="tab3" class="tab-content hide">
+			<div>
+				@**@
+				@Html.Partial("FreightsList", model: (IEnumerable<AuthIdentity.Models.HomeViewModels.FreightViewModel>)ViewData["freights"]) 
+			</div>
+		</section>
+
+		
+
+
+
+
+    
+
+</div>
+
+
+
+
+<script>
+			$(document).ready(function() {
+				$('.nav-tabs > li > a').click(function(event){
+					event.preventDefault();//stop browser to take action for clicked anchor
+					
+					//get displaying tab content jQuery selector
+					var active_tab_selector = $('.nav-tabs > li.active > a').attr('href');					
+					
+					//find actived navigation and remove 'active' css
+					var actived_nav = $('.nav-tabs > li.active');
+					actived_nav.removeClass('active');
+					
+					//add 'active' css into clicked navigation
+					$(this).parents('li').addClass('active');
+					
+					//hide displaying tab content
+					$(active_tab_selector).removeClass('active');
+					$(active_tab_selector).addClass('hide');
+					
+					//show target tab content
+					var target_tab_selector = $(this).attr('href');
+					$(target_tab_selector).removeClass('hide');
+					$(target_tab_selector).addClass('active');
+				});
+			});
+</script>
+
+
+
+
+

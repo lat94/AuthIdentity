@@ -1,0 +1,170 @@
+@model IEnumerable<AuthIdentity.Models.HomeViewModels.SalesViewModel>;
+@using System.Globalization;
+@{
+    CultureInfo ptBR = new CultureInfo("pt-BR");
+    ViewBag.SubTitle = "Listagem de Vendas";
+}
+
+
+
+<!--table sorter --> 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+
+@*
+<!--date picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/pt-br.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+*@
+
+<!--table sorter --> 
+
+        
+        <div class='filter col-md-12' >
+            <h4>@ViewBag.SubTitle</h4>
+
+            @* DATE PICKER
+            <div class="form-group" style=" max-width: 150px;">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            *@
+
+
+
+        </div>
+
+        <div class="container col-md-12 tblHolder" >
+        <table id="tblSales" class="table table-bordered table-responsive-md table-condensed" cellspacing="0" style="width:100%">
+        <thead>
+            <tr>
+                <th>Editar/Remover</th>
+                <th>@Html.DisplayNameFor(model => model.Username)</th>
+                <th>@Html.DisplayNameFor(model => model.DateArrival)</th>
+                <th>@Html.DisplayNameFor(model => model.IdCompany)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>@Html.DisplayNameFor(model => model.Order)</th>
+                <th>@Html.DisplayNameFor(model => model.Freight)</th>
+                <th>@Html.DisplayNameFor(model => model.Client)</th>
+                <th>@Html.DisplayNameFor(model => model.Payment)</th>              
+                
+
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Editar/Remover</th>
+                <th>@Html.DisplayNameFor(model => model.Username)</th>
+                <th>@Html.DisplayNameFor(model => model.DateArrival)</th>
+                <th>@Html.DisplayNameFor(model => model.IdCompany)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>@Html.DisplayNameFor(model => model.Order)</th>
+                <th>@Html.DisplayNameFor(model => model.Freight)</th>
+                <th>@Html.DisplayNameFor(model => model.Client)</th>
+                <th>@Html.DisplayNameFor(model => model.Payment)</th>                
+                
+            </tr>
+
+            
+        </tfoot>
+        <tbody>  
+            @foreach(var item in Model)
+            {
+                <tr id="trSales">
+                    <td style="text-align: center;">
+                        <span class="table-remove ">
+                            <div class="btn-group" role="group">
+                                <button type="button"  class="btn btn-warning btn-rounded btn-sm" id=""><span class="glyphicon glyphicon-pencil"></span></button>
+                                <button type="button"  class="btn btn-danger btn-rounded btn-sm" id="btnDel"><span class="glyphicon glyphicon-remove"></span></button>                                
+                            </div>                            
+                        </span>
+                    </td>
+                    <td>@item.Username</td>
+                    <td>@item.DateArrival.ToShortDateString()</td>
+                    <td >@item.IdCompany</td>
+                    <td>@item.Status</td>
+                    <td>@item.Order</td>
+                    <td>@item.Freight</td>
+                    <td>@item.Client</td>
+                    <td>@item.Payment</td>
+                    
+                </tr>
+
+
+              
+
+            }          
+            
+            
+        </tbody>
+    </table>
+
+        </div>
+
+         <!-- data table -->
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+
+
+        
+
+        <script type="text/javascript">
+            /*date picker
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    
+
+                    format: 'DD/MM/YYYY',
+                    locale: 'pt-BR'
+                });
+            });  */
+
+
+            $(document).ready( function () {
+                $('#tblSales').DataTable({          
+                    "language": {
+                        "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                    },                     
+                    "lengthMenu": false,             
+                    "bLengthChange": false,
+                    "scrollX": true,
+                    "responsive": true,
+                    "pageLength": 5
+                
+                });  
+
+               
+            });
+
+
+         $(".dropdown-menu a").click(function(){
+             $("#selected").text($(this).text());
+
+         });
+
+         $('.table-remove').click(function () {
+            $(this).parents('tr').detach();
+         });
+
+         
+
+
+
+
+
+        </script>
+
+@*
+<div>
+    @foreach(var item in Model)
+    {
+        <h4>@item.Username</h4>
+
+    }
+
+</div>
+*@
